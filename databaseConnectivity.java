@@ -30,7 +30,7 @@ Connection mycon = DriverManager.getConnection("jdbc:mysql://localhost:3306/java
 			ps.execute();
 		// for delete and update record ,uncomment following command
 			//PreparedStatement ps1 = mycon.prepareStatement("delete from  student where stdid ='4'");
-			//stmt.executeUpdate("delete from  student where stdid ='3'");
+			//stmt.executeUpdate("delete from  student where stdid ='4'");
 			//stmt.executeUpdate("update student set stdname ='Kartikey' where stdid ='2'");
 
 		ResultSet rs = stmt.executeQuery("select * from student"); // to see every row of student table
