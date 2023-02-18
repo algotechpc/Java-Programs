@@ -6,8 +6,11 @@ public class databaseConnectivity {
 
         try {
         	//Class.forName("com.mysql.jdbc.Driver"); 
+		
+		//establish the connection with mysql database
 
-Connection mycon = DriverManager.getConnection("jdbc:mysql://localhost:3306/javadbc","root","amity");
+Connection mycon = DriverManager.getConnection("jdbc:mysql://localhost:3306/javadbc","root","amity"); 
+		       // javadbc is name of database , root is username of mysql, amity is password for mysql database
 		      if (mycon == null) {
 		          System.out.println("JDBC connection is not established");
 		          return;
@@ -18,17 +21,19 @@ Connection mycon = DriverManager.getConnection("jdbc:mysql://localhost:3306/java
 		       //con.close();
 
 		    } 
+		//insert records into student table(contains 3 fields) under database name javadbc
 			Statement stmt = mycon.createStatement();
 			PreparedStatement ps = mycon.prepareStatement("insert into student values(?,?,?)");
-			ps.setString(1,"6");
-			ps.setString(2,"Mr.Amity");
-			ps.setString(3,"engg");
+			ps.setString(1,"2");     //1st field --> stdid (firstfield ,stdid)
+			ps.setString(2,"Ananya");   //2nd field--> student name (secondfield ,stdname)
+			ps.setString(3,"Engg");  //3rd field --> course (thirdfield ,course)
 			ps.execute();
+		// for delete and update record ,uncomment following command
 			//PreparedStatement ps1 = mycon.prepareStatement("delete from  student where stdid ='4'");
-			stmt.executeUpdate("delete from  student where stdid ='3'");
-			stmt.executeUpdate("update student set stdname ='APJ' where stdid ='2'");
+			//stmt.executeUpdate("delete from  student where stdid ='3'");
+			//stmt.executeUpdate("update student set stdname ='Kartikey' where stdid ='2'");
 
-		ResultSet rs = stmt.executeQuery("select * from student");
+		ResultSet rs = stmt.executeQuery("select * from student"); // to see every row of student table
 		while(rs.next())
 		{
 			//System.out.println(rs.getString("stdid")+" "+rs.getString("stdname")+" "+rs.getString("course"));
